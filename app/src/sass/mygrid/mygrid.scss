@@ -1,0 +1,53 @@
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@mixin media($max-width){
+  $screen-width: str-replace($max-width + '', 'px');
+  @media screen and (max-width: #{$screen-width}px) {
+    @content;
+  }
+}
+
+@mixin minMedia($min-width){
+  $screen-width: str-replace($min-width + '', 'px');
+  @media screen and (min-width: #{$screen-width}px) {
+    @content;
+  }
+}
+
+@mixin minMediaOrient($min-width, $orient) {
+  @media screen and (min-width: #{$min-width}px) and (orientation: $orient){
+    @content;
+  }
+}
+
+@mixin generate_styles($styles) {
+  @each $class_name, $style_names in $styles {
+    #{$class_name} {
+      @each $style_name, $style_value in $style_names {
+        #{$style_name}: #{$style_value};
+      }
+    }
+  }
+
+  @each $bp, $val in $grid-breakpoints {
+    @if $bp != 'xs' {
+      @each $class_name, $style_names in $styles {
+        #{$class_name}--#{$bp} {
+          @include minMedia($val) {
+            @each $style_name, $style_value in $style_names {
+              #{$style_name}: #{$style_value};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@import "../base/mygrid";

@@ -1,0 +1,14 @@
+.bg--transparent {
+  background: transparent;
+}
+.bg-white {
+  background: theme_color("primary");
+}
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.bg--cover {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

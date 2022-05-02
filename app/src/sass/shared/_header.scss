@@ -1,0 +1,9 @@
+header{
+  position: relative;
+  z-index: 5;
+}
+
+.header {
+  @extend header;
+  padding: 20px 0 0;
+}

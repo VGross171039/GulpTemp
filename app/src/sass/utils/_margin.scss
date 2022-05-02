@@ -1,0 +1,30 @@
+$styles: (
+  ".m-05": (
+    "margin": 0.5rem
+  ),
+  ".mt-05": (
+    "margin-top": 0.5rem
+  ),
+  ".mr-05": (
+    "margin-right": 0.5rem
+  ),
+  ".mb-05": (
+    "margin-bottom": 0.5rem
+  ),
+  ".ml-05": (
+    "margin-left": 0.5rem
+  ),
+  ".mx-05": (
+    "margin-left": 0.5rem,
+    "margin-right": 0.5rem
+  ),
+  ".my-05": (
+    "margin-top": 0.5rem,
+    "margin-bottom": 0.5rem
+  ),
+  ".m-auto": (
+    "margin": 0 auto
+  )
+);
+
+@include generate_styles($styles);

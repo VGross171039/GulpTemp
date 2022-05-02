@@ -1,0 +1,38 @@
+.image-initial {
+  max-width: none;
+}
+.image-responsive {
+  width: 100%;
+  height: auto;
+}
+.image-grayscale {
+  filter: grayscale(100%);
+  transition: 0.3s;
+  &:hover {
+    filter: grayscale(0);
+  }
+}
+
+@each $bp, $val in $grid-breakpoints {
+  @if $bp != "xs" {
+    .image-initial--#{$bp} {
+      @include minMedia($val) {
+        max-width: none;
+      }
+    }
+    .image-responsive--#{$bp} {
+      @include minMedia($val) {
+        max-width: none;
+      }
+    }
+    .image-grayscale--#{$bp} {
+      @include minMedia($val) {
+        filter: grayscale(100%);
+        transition: 0.3s;
+        &:hover {
+          filter: grayscale(0);
+        }
+      }
+    }
+  }
+}
