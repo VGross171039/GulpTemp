@@ -65,23 +65,6 @@ function scriptLibs() {
     .pipe(gulp.dest('./app/js/'))
 }
 
-function mygrid() {
-  return gulp.src('./app/src/sass/mygrid/mygrid.scss')
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({
-      cascade: false
-    }))
-    .pipe(rename({
-      basename: 'mygrid',
-    }))
-    .pipe(sourcemaps.write('.'))
-    .pipe(cleanCss({
-      level: 2
-    }))
-    .pipe(gulp.dest('./app/css/mygrid/'))
-};
-
 function styles() {
   return gulp.src(paths.styles.src)
     .pipe(sourcemaps.init())
@@ -135,7 +118,6 @@ const add = gulp.series(clean, styleLibs, scriptLibs, gulp.parallel(styles, scri
 // ===================== Dev Functions Exports =======================
 
 exports.clean = clean;
-exports.mygrid = mygrid;
 exports.styles = styles;
 exports.scripts = scripts;
 exports.styleLibs = styleLibs;
@@ -144,11 +126,6 @@ exports.img = img;
 exports.watch = watch;
 exports.add = add;
 exports.default = add;
-
-// ======================= Grid generation ============================
-
-const gridgeneration = gulp.series([clean, mygrid]);
-exports.gridgeneration = gridgeneration;
 
 // ===================== Dist ==========================
 
