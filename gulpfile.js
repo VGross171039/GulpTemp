@@ -50,7 +50,7 @@ function clean() {
 }
 
 function styleLibs() {
-  return gulp.src(['./app/src/libs/testlib/testlib.css'])
+  return gulp.src(['./app/src/samples/sample.scss'])
     .pipe(cleanCss({
       level: 2
     }))
@@ -59,7 +59,7 @@ function styleLibs() {
 }
 
 function scriptLibs() {
-  return gulp.src(['./app/src/libs/testlib/testlib.js'])
+  return gulp.src(['./app/src/samples/sample.js'])
     .pipe(concat('compiled.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./app/js/'))
